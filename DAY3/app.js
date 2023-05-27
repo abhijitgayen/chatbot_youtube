@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+app.use(express.static('public'));
+app.use(express.json());
+
 const {botResponse} = require('./chatbot/botResponse')
 
 app.get('/', (req, res) => {
@@ -20,9 +23,9 @@ app.get('/bot_response', (req, res) =>{
 });
 
 app.post('/bot_response', (req, res) =>{
-    const user_message = req.query?.message;
+    const user_message = req.body?.message;
     if(user_message){
-        botResponse(req.query.message).then((response) =>{
+        botResponse(user_message).then((response) =>{
             res.send(response);
         });
     }

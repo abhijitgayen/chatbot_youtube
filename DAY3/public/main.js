@@ -7,8 +7,28 @@ async function send() {
   running = true;
 
   addMsg(msg);
-  
-//   window.setTimeout(addResponseMsg, 1000, 'I am still learning');
+
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    "message": msg
+  });
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+
+  fetch("/bot_response", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      console.log(result);
+      window.setTimeout(addResponseMsg, 1000, result.message||'I am still learning');
+    })
+    .catch(error => console.log('error', error));
 }
 
 function addMsg(msg) {
@@ -46,7 +66,7 @@ document.getElementById("message").addEventListener("keyup", function (event) {
       document.getElementById("chatbot").classList.remove("collapsed")
       document.getElementById("chatbot_toggle").children[0].style.display = "none"
       document.getElementById("chatbot_toggle").children[1].style.display = ""
-      setTimeout(addResponseMsg,1000,"Hi")
+      // setTimeout(addResponseMsg,1000,"Hi")
     }
     else {
       document.getElementById("chatbot").classList.add("collapsed")
