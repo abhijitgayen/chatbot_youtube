@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 
 const path = require('path');
-let initial_path = path.join(__dirname, "public");
+let initial_path = path.join(__dirname, "chatbot");
 app.use(express.static(initial_path));
 app.use(express.json());
 
 
-const {botResponse} = require('./public/botResponse')
+const {botResponse} = require('./chatbot/botResponse')
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
