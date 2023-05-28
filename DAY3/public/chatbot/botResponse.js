@@ -2,7 +2,7 @@
 const fs = require('fs');
 const { NlpManager } = require('node-nlp');
 
-const data = fs.readFileSync('chatbot/model.nlp', 'utf8');
+const data = fs.readFileSync('public/chatbot/model.nlp', 'utf8');
 const manager = new NlpManager();
 manager.import(data);
 
