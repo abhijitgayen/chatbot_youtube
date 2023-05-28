@@ -7,7 +7,7 @@ app.use(express.static(initial_path));
 app.use(express.json());
 
 
-// const {botResponse} = require('./chatbot/botResponse')
+const {botResponse} = require('./chatbot/botResponse')
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
@@ -16,9 +16,9 @@ app.get('/', (req, res) => {
 app.get('/bot_response', (req, res) =>{
     console.log(req.query);
     if (req.query?.message){
-        // botResponse(req.query.message).then((response) =>{
-        //     res.send(response);
-        // });
+        botResponse(req.query.message).then((response) =>{
+            res.send(response);
+        });
     }
     else{
         res.send('No response sorry Not working')
@@ -28,9 +28,9 @@ app.get('/bot_response', (req, res) =>{
 app.post('/bot_response', (req, res) =>{
     const user_message = req.body?.message;
     if(user_message){
-        // botResponse(user_message).then((response) =>{
-        //     res.send(response);
-        // });
+        botResponse(user_message).then((response) =>{
+            res.send(response);
+        });
     }
     else{
         res.send('No response sorry Not working')
