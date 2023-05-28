@@ -4,7 +4,7 @@
   "description": "this is day3 video on chatbotusong js",
   "main": "app.js",
   "scripts": {
-    "dev": "node app.js",
+    "start": "node app.js",
     "train": "cd public/chatbot && node train.js"
   },
   "keywords": [
