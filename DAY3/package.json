@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "node app.js",
-    "train": "cd chatbot && node train.js"
+    "train": "cd public/chatbot && node train.js"
   },
   "keywords": [
     "nodejs",
