@@ -4,7 +4,7 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.json());
 
-const {botResponse} = require('./public/chatbot/botResponse')
+const {botResponse} = require('./public/botResponse')
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
